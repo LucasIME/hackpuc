@@ -2,7 +2,8 @@ var angular = require('angular');
 
 angular.module('app', [
     'app.navbar',
-    'app.home'
+    'app.home',,
+    'app.dashboard'
 ])
 
 .config(routesConfig);
@@ -18,9 +19,14 @@ function routesConfig($routeProvider, c){
       templateUrl: c.routes.home.view,
       controller : 'HomeCtrl',
    })
+   .when('/dashboard/', {
+      templateUrl: c.routes.dashboard.view,
+      controller : 'DashboardCtrl',
+   })
 }
 
 //Requires to allow webpack to bundle whole application
 require('./home/home.js');
+require('./dashboard/dashboard.js');
 require('./navbar/navbar.js');
 
