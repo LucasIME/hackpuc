@@ -1,41 +1,23 @@
 var angular =  require('angular');
+var Highcharts = require('highcharts');
+require('highcharts/modules/exporting')(Highcharts);
 
-function treasuryDonutController($scope) {
-    $scope.portfolio = [
-        {
-            name: "Tesouro Selic 2021 (LFT)",
-            quantity: 0.21,
-            applied: 1431.64,
-            valued: 1881.48
-        },
-        {
-            name: "Tesouro Prefixado 2021 (LTN)",
-            quantity: 2.47,
-            applied: 1236.83,
-            valued: 1806.11
-        },
-        {
-            name: "Tesouro Prefixado 2018 (LTN)",
-            quantity: 1.57,
-            applied: 1137.48,
-            valued: 1514.64
-        },
-        {
-            name: "Tesouro IPCA+ 2019 (NTNB Princ)",
-            quantity: 0.37,
-            applied: 761.81,
-            valued: 1032.75
-        },
-        {
-            name: "Tesouro IPCA+ com Juros Semestrais",
-            quantity: 0.13,
-            applied: 347.02,
-            valued: 419.99
-        }
-    ]
+var colors = Highcharts.getOptions().colors;
+
+function drilldown(portfolio) {
+    data = []
+    for (i = 0; i < portfolio.length; i += 1) {
+        data.push({
+            name: 'a',
+            y: portfolio[i].quantity,
+            color: colors[0]
+        })
+    }
+    return data
 }
 
 function treasurydonut(scope, element) {
+    console.log(drilldown(scope.portfolio))
     Highcharts.chart(element[0], {
         chart: {
             type: 'pie'
@@ -43,11 +25,15 @@ function treasurydonut(scope, element) {
         title: 'Treasury Donut',
         plotOptions: {
             pie: {
-                
+                shadow: false,
+                center: ['50%', '50%']
             },
-            series: {
-                data: scope.data
-            }
+            series: [{
+                name: "Treasury Drilldown",
+                data: drilldown(scope.portfolio),
+                size: '80%',
+                innerSize: '60%',
+            }]
         }
     });
 }
@@ -58,7 +44,7 @@ angular.module('app.treasurydonut', [])
             restrict: 'E',
             template: '<div></div>',
             scope: {
-                data: '='
+                portfolio: '='
             },
             link: treasurydonut
         }
