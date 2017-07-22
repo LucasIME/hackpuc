@@ -44,8 +44,12 @@
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
           <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="mdl-cell--12-col">
+              <h4>Seu Tesouro</h4>
+            </div>
             <highchart id="treasurydonut" config="treasuryDonutConfig" class="mdl-cell--4-col"></highchart>
-            <table class="mdl-cell-8-col">
+            <div class="mdl-cell--1-col"></div>
+            <table class="mdl-cell--7-col">
               <tr>
                 <td>Título</td>
                 <td>Quantidade</td>
@@ -54,9 +58,15 @@
               </tr>
               <tr ng-repeat="asset in portfolio">
                 <td>{{ asset.name }}</td>
-                <td>{{ asset.quantity }}</td>
-                <td>{{ asset.applied }}</td>
-                <td>{{ asset.value }}</td>
+                <td>R$ {{ asset.quantity }}</td>
+                <td>R$ {{ asset.applied }}</td>
+                <td>R$ {{ asset.value }}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><b>Total:</b></td>
+                <td><b>R$ {{ getPortifolioTotalValue() }}</b></td>
               </tr>
             </table>
           </div>
