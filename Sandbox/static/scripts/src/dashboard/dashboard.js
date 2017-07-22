@@ -4,7 +4,9 @@ var angular = require('angular');
 angular.module('app.dashboard', ['ngRoute'])
 
 .controller('DashboardCtrl', function($scope, $http){
-    var self = this;
+    var vm = this;
+
+    $scope.username = "Carolina";
 
     $scope.portfolio = [
         {
