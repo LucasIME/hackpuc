@@ -2,7 +2,7 @@ var angular = require('angular');
 
 angular.module('app', [
     'app.navbar',
-    'app.home',,
+    'app.home',
     'app.dashboard'
 ])
 
