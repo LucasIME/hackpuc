@@ -44,33 +44,20 @@
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
           <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <div class="mdl-cell--12-col">
-              <h4>Seu Tesouro</h4>
-            </div>
-            <highchart id="treasurydonut" config="treasuryDonutConfig" class="mdl-cell--4-col"></highchart>
-            <div class="mdl-cell--1-col"></div>
-            <table class="mdl-cell--7-col">
-              <tr>
-                <td>Título</td>
-                <td>Quantidade</td>
-                <td>Aplicado</td>
-                <td>Valor Atual</td>
-              </tr>
-              <tr ng-repeat="asset in portfolio">
-                <td>{{ asset.name }}</td>
-                <td>R$ {{ asset.quantity }}</td>
-                <td>R$ {{ asset.applied }}</td>
-                <td>R$ {{ asset.value }}</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td><b>Total:</b></td>
-                <td><b>R$ {{ getPortifolioTotalValue() }}</b></td>
-              </tr>
-            </table>
+            
+            <input type="radio" name="saving_type" value="constant" class="mdl-radio__button "> Valor Fixo<br>
+            <input type="radio" name="saving_type" value="round" class="mdl-radio__button"> Arredondamento<br>
+            <input type="radio" name="saving_type" value="percentage" class="mdl-radio__button"> Porcentagem<br>
+            
+            <!-- Default Slider -->
+            <h6>Selecione o seu percentual de investimento por compra</h6>
+            <input class="mdl-slider mdl-js-slider" type="range"
+            min="0" max="10" value="0" tabindex="0" ng-model="savePercentage">
+            {{savePercentage}}%
+            
           </div>
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+            <h6>Dinheiro aplicado x Tempo</h6>
             <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
               <use xlink:href="#chart" />
             </svg>

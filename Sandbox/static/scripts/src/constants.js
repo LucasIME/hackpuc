@@ -13,5 +13,8 @@ angular
             dashboard: {
                 view: 'static/scripts/src/dashboard/dashboard.html'
             },
+            config: {
+                view: 'static/scripts/src/config/config.html'
+            }
         }
     });

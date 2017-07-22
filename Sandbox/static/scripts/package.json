@@ -19,6 +19,8 @@
   "dependencies": {
     "angular": "^1.6.5",
     "angular-resource": "^1.6.5",
-    "angular-route": "^1.6.5"
+    "angular-route": "^1.6.5",
+    "highcharts": "^5.0.12",
+    "highcharts-ng": "^1.1.0"
   }
 }
