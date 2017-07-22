@@ -33,24 +33,25 @@ angular.module('app.dashboard', ['ngRoute', 'highcharts-ng'])
         $scope.treasuryDonutConfig.series[1].data = drilldown($scope.portfolio);
     }
     function getTreasuryColor(name) {
-        if (~name.indexOf('LTN')) {
-            return '#fe9929';
+        if (~name.indexOf('(LTN)')) {
+            return '#99d8c9';
         }
-        if (~name.indexOf('LFT')) {
-            return '#fed98e';
+        if (~name.indexOf('(LFT)')) {
+            return '#238b45';
         }
-        if (~name.indexOf('NTNB Princ')) {
-            return '#ec7014';
+        if (~name.indexOf('(NTNB Princ)')) {
+            return '#41ae76';
         }
-        if (~name.indexOf('NTNB')) {
+        if (~name.indexOf('(NTNB)')) {
             return '#cc4c02';
         }
-        if (~name.indexOf('NTNF')) {
-            return '#8c2d04';
+        if (~name.indexOf('(NTNF)')) {
+            return '#66c2a4';
         }
+        console.log(name)
     }
     function aggregate(portfolio) {
-        categories = ['LTN', 'LFT', 'NTNB', 'NTNB Princ', 'NTNF'];
+        categories = ['(LTN)', '(LFT)', '(NTNB)', '(NTNB Princ)', '(NTNF)'];
         total = $scope.getPortifolioTotalValue();
 
         data = [];
@@ -61,7 +62,7 @@ angular.module('app.dashboard', ['ngRoute', 'highcharts-ng'])
                 subtotal += assets[j].value;
             }
             data.push({
-                name: categories[i],
+                name: categories[i].substring(1, categories[i].length-1),
                 y: (subtotal / total),
                 color: getTreasuryColor(categories[i])
             });
@@ -69,7 +70,7 @@ angular.module('app.dashboard', ['ngRoute', 'highcharts-ng'])
         return data
     }
     function drilldown(portfolio) {
-        categories = ['LTN', 'LFT', 'NTNB', 'NTNB Princ', 'NTNF'];
+        categories = ['(LTN)', '(LFT)', '(NTNB)', '(NTNB Princ)', '(NTNF)'];
         total = $scope.getPortifolioTotalValue();
 
         ordered_portfolio = [];
@@ -103,7 +104,11 @@ angular.module('app.dashboard', ['ngRoute', 'highcharts-ng'])
             }
         },
         tooltip: {
-            valueSuffix: '%'
+            valueSuffix: '%',
+            formatter: function () {
+                return this.y > 0.01 ? '<b>' + this.point.name + ':</b> ' +
+                    (this.y*100).toFixed(2) + '%' : null;
+            }
         },
         series: [
             {
@@ -125,7 +130,7 @@ angular.module('app.dashboard', ['ngRoute', 'highcharts-ng'])
                 dataLabels: {
                     formatter: function () {
                         return this.y > 1 ? '<b>' + this.point.name + ':</b> ' +
-                            this.y + '%' : null;
+                            this.y.toFixed(2) + '%' : null;
                     }
                 },
                 id: 'drilldown'
