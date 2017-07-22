@@ -5,4 +5,8 @@ angular.module('app.dashboard', ['ngRoute'])
 
 .controller('DashboardCtrl', function($scope, $http){
     var self = this;
+
+    angular.element(document).ready(function(){
+        componentHandler.upgradeDom();
+    });
 });
