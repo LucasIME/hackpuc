@@ -35,9 +35,31 @@ function treasuryDonutController($scope) {
     ]
 }
 
+function treasurydonut(scope, element) {
+    Highcharts.chart(element[0], {
+        chart: {
+            type: 'pie'
+        },
+        title: 'Treasury Donut',
+        plotOptions: {
+            pie: {
+                
+            },
+            series: {
+                data: scope.data
+            }
+        }
+    });
+}
 
 angular.module('app.treasurydonut', [])
-    .component('treasurydonut', {
-        templateUrl: 'static/scripts/src/treasurydonut/treasurydonut.html',
-        controller: treasuryDonutController
+    .directive('treasurydonut', function () {
+        return {
+            restrict: 'E',
+            template: '<div></div>',
+            scope: {
+                data: '='
+            },
+            link: treasurydonut
+        }
     });
