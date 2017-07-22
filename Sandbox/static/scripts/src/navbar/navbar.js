@@ -14,29 +14,9 @@ function navBarController($scope) {
             iClass: "inbox"
         },
         {
-            text: "Trash",
-            url: "#!/",
-            iClass: "delete"
-        },
-        {
-            text: "Spam",
-            url: "#!/",
-            iClass: "report"
-        },
-        {
             text: "Forums",
             url: "#!/",
             iClass: "forum"
-        },
-        {
-            text: "Updates",
-            url: "#!/",
-            iClass: "flag"
-        },
-        {
-            text: "Promos",
-            url: "#!/",
-            iClass: "local_offer"
         },
         {
             text: "Purchases",
