@@ -4,8 +4,8 @@ angular.module('app', [
     'app.navbar',
     'app.home',
     'app.dashboard',
-    'app.treasurydonut',
-    'app.card'
+    'app.card',
+    'app.config'
 ])
 
 .config(routesConfig);
@@ -25,12 +25,15 @@ function routesConfig($routeProvider, c){
       templateUrl: c.routes.dashboard.view,
       controller : 'DashboardCtrl',
    })
+   .when('/config/', {
+       templateUrl: c.routes.config.view,
+       controller: 'ConfigCtrl',
+   })
 }
 
 //Requires to allow webpack to bundle whole application
 require('./home/home.js');
 require('./dashboard/dashboard.js');
 require('./navbar/navbar.js');
-require('./treasurydonut/treasurydonut.js');
 require('./card/card.js');
-
+require('./config/config.js');

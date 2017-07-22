@@ -5,12 +5,12 @@ function navBarController($scope) {
     $scope.headerList = [
         {
             text: "Home",
-            url: "#!/",
+            url: "#!/dashboard",
             iClass: "home"
         },
         {
-            text: "Inbox",
-            url: "#!/",
+            text: "Configs",
+            url: "#!/config",
             iClass: "inbox"
         },
         {
