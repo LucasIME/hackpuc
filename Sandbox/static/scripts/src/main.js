@@ -3,7 +3,8 @@ var angular = require('angular');
 angular.module('app', [
     'app.navbar',
     'app.home',
-    'app.dashboard'
+    'app.dashboard',
+    'app.treasurydonut'
 ])
 
 .config(routesConfig);
@@ -29,4 +30,5 @@ function routesConfig($routeProvider, c){
 require('./home/home.js');
 require('./dashboard/dashboard.js');
 require('./navbar/navbar.js');
+require('./treasurydonut/treasurydonut.js')
 
