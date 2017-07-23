@@ -17,11 +17,11 @@ routesConfig.$inject = ['$routeProvider', 'constants'];
 function routesConfig($routeProvider, c){
     console.log(c);
    $routeProvider
-   .when('/', {
+   .when('/home', {
       templateUrl: c.routes.home.view,
       controller : 'HomeCtrl',
    })
-   .when('/dashboard/', {
+   .when('/', {
       templateUrl: c.routes.dashboard.view,
       controller : 'DashboardCtrl',
    })

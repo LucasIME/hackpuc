@@ -5,7 +5,7 @@ function navBarController($scope) {
     $scope.headerList = [
         {
             text: "Home",
-            url: "#!/dashboard",
+            url: "#!/",
             iClass: "home"
         },
         {
