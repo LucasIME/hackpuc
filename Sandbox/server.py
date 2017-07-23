@@ -2,13 +2,25 @@ from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/land/')
 def land():
     return render_template('land.html')
 
-@app.route('/dashboard/')
+@app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/balance')
+def balance():
+    return jsonify({
+        "balance": 53.20
+    })
+
+@app.route('/projected')
+def projected():
+    return jsonify({
+        "projected": 15.73
+    })
 
 @app.route('/portfolio', methods=['GET'])
 def portfolio():

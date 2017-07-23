@@ -11,6 +11,16 @@ angular.module('app.dashboard', ['ngRoute', 'highcharts-ng'])
     $scope.username = "Carolina";
 
     // Data 
+    $scope.balance = 0;
+    $http.get('/balance')
+        .then(function (response) {
+            $scope.balance = response.data.balance;
+        });
+    $scope.projected = 0;
+    $http.get('/projected')
+        .then(function (response) {
+            $scope.projected = response.data.projected;
+        });
     $scope.portfolio = []
     $http.get('/portfolio')
         .then(function (response) {
