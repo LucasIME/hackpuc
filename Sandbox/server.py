@@ -3,6 +3,10 @@ from flask import Flask, request, render_template, jsonify
 app = Flask(__name__)
 
 @app.route('/')
+def land():
+    return render_template('land.html')
+
+@app.route('/dashboard/')
 def home():
     return render_template('index.html')
 
