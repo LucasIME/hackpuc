@@ -6,7 +6,8 @@ angular.module('app.config', ['ngRoute'])
     $scope.welcome_message = "Config Page";
 
     $scope.username = "Carolina";
-    $scope.savePercentage = 0;
+    $scope.savePercentage = 0.1;
+    $scope.fixTax = 0;
 
     // Data 
     $scope.balance = 0;
